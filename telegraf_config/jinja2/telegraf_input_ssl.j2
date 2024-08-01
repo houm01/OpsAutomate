@@ -1,0 +1,8 @@
+[[inputs.x509_cert]]
+  sources = ["{{ ssl_key }}"]
+  timeout = "5s"
+
+[inputs.x509_cert.tags]
+  customer = "{{ ssl_value['customer'] }}"
+  name = "{{ ssl_value['name'] }}"
+  env = "{{ ssl_value['env'] }}"

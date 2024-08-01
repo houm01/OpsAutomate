@@ -1,0 +1,112 @@
+global_tags: 'None'
+
+agent:
+    snmp:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+        snmp_translator: 'gosmi'
+
+    ping:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+
+    http:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+
+    ssl:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+
+    prometheus:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+    tcp:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+    dns:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+
+
+outputs:
+    urls: 'https://xxx:8086'
+    database: 'telegraf'
+    timeout: '60s'
+    username: 'telegraf'
+    password: 'XXXX'
+    skip_database_creation: 'true'
+    insecure_skip_verify: 'true'
+
+inputs:
+    snmp_v2_community_01:
+        version: 2
+        timeout: '30s'
+        retries: '3'
+        community: 'xxx'
+        
+    snmp_v3_user_01:
+        version: 3
+        timeout: "30s"
+        retries: 3
+        path: ["/usr/share/snmp/mibs"]
+        sec_name: "xx"
+        auth_protocol: "SHA"
+        auth_password: "xx"
+        priv_protocol: "DES"
+        priv_password: "xx"
+        sec_level: "authPriv"
+
+
+    ping: 
+        count: 2
+        timeout: 1.0

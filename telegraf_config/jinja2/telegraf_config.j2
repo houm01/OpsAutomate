@@ -1,0 +1,99 @@
+{% include 'telegraf_global_tags.j2' %}
+{% include 'telegraf_agent.j2' %}
+{% include 'telegraf_outputs.j2' %}
+
+{% if monitor_type == "snmp" %}
+ 
+        {% for url, device_info in instances.items() %}
+
+            {% if device_info['snmp_version'] == 'v3' %}
+                {% include "telegraf_inputs_snmp_v3.j2" %}
+                    {% if device_info['vendor'] == 'huawei' %}
+                        {% include "telegraf_input_huawei.j2" %}
+                    
+                    {% elif device_info['vendor'] == 'cisco' %}
+                        {% include "telegraf_input_cisco.j2" %}
+
+                    {% elif device_info['vendor'] == 'h3c_wac' %}
+                        {% include "telegraf_input_h3c_wac.j2" %}
+
+                    {% elif device_info['vendor'] == 'dell' %}
+                        {% include "telegraf_input_dell.j2" %}
+
+                    {% elif device_info['vendor'] == 'sundray_nac' %}
+                        {% include "telegraf_input_sundray_nac.j2" %}
+
+                    {% elif device_info['vendor'] == 'sundray_switch' %}
+                        {% include "telegraf_input_sundray_switch.j2" %}
+
+                    {% elif device_info['vendor'] == 'sangfor' %}
+                        {% include "telegraf_input_sangfor.j2" %}
+
+                    {% elif device_info['vendor'] == 'ruijie_switch' %}
+                        {% include "telegraf_input_ruijie_switch.j2" %}
+
+                    {% endif %}
+
+            {% elif device_info['snmp_version'] == 'v2' %}
+
+                {% include "telegraf_inputs_snmp_v2.j2" %}
+                    {% if device_info['vendor'] == 'huawei' %}
+                        {% include "telegraf_input_huawei.j2" %}
+                    
+                    {% elif device_info['vendor'] == 'cisco' %}
+                        {% include "telegraf_input_cisco.j2" %}
+
+                    {% elif device_info['vendor'] == 'h3c_wac' %}
+                        {% include "telegraf_input_h3c_wac.j2" %}
+
+                    {% elif device_info['vendor'] == 'dell' %}
+                        {% include "telegraf_input_dell.j2" %}
+
+                    {% elif device_info['vendor'] == 'sundray_nac' %}
+                        {% include "telegraf_input_sundray_nac.j2" %}
+
+                    {% elif device_info['vendor'] == 'sundray_switch' %}
+                        {% include "telegraf_input_sundray_switch.j2" %}
+
+                    {% elif device_info['vendor'] == 'sangfor' %}
+                        {% include "telegraf_input_sangfor.j2" %}
+
+                    {% elif device_info['vendor'] == 'ruijie_switch' %}
+                        {% include "telegraf_input_ruijie_switch.j2" %}
+
+                    {% endif %}
+            {% endif %}
+      
+    {% endfor %}
+
+{% elif monitor_type == "ping" -%}
+    {% for ping_key, ping_value in instances.items() -%}
+            {% include "telegraf_input_ping.j2" %}
+    {% endfor %}
+
+{% elif monitor_type == "http" -%}
+    {% for http_key, http_value in instances.items() -%}
+            {% include "telegraf_input_http.j2" %}
+    {% endfor %}
+
+{% elif monitor_type == "ssl" -%}
+    {% for ssl_key, ssl_value in instances.items() -%}
+            {% include "telegraf_input_ssl.j2" %}
+    {% endfor %}
+
+{% elif monitor_type == "tcp" -%}
+    {% for tcp_key, tcp_value in instances.items() -%}
+            {% include "telegraf_input_tcp.j2" %}
+    {% endfor %}
+
+{% elif monitor_type == "dns" -%}
+    {% for dns_key, dns_value in instances.items() -%}
+            {% include "telegraf_input_dns.j2" %}
+    {% endfor %}
+
+{% elif monitor_type == "prometheus" -%}
+    {% for prometheus_endpoint, prometheus_value in instances.items() -%}
+            {% include "telegraf_input_prometheus.j2" %}
+    {% endfor %}
+
+{% endif %}

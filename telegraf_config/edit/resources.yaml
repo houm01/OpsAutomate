@@ -1,0 +1,47 @@
+snmp:
+    jsqd:
+        10.1.1.1:
+            hostname: test
+            ip: 10.1.1.1
+            snmp_version: v2
+            snmp_auth: snmp_v2_community_01
+            vendor: huawei
+        10.30.21.5:
+            hostname: cisco
+            ip: 10.30.21.5
+            snmp_version: v2
+            snmp_auth: snmp_v3_user_01
+            vendor: cisco
+    # shbd:
+    #     10.30.21.6:
+    #         hostname: cisco
+    #         ip: 10.30.21.6
+    #         snmp_version: v2
+    #         snmp_auth: snmp_v2_community_01
+    #         vendor: cisco
+
+ping:
+    test:
+        10.1.1.1:
+            name: 'test01'
+            env: 'prod'
+
+http:
+    test:
+        http://test.com:8899:
+            name: 'test01'
+            env: 'prod'
+
+prometheus:
+    test:
+        http://192.168.10.1:9100/metrics:
+            remark: ''
+        http://192.168.10.2:9100/metrics:
+            remark: ''
+
+ssl:
+    test01:
+        https://www.baidu.com:
+            name: 'baidu_public'
+            customer: 'baidu'
+            env: 'prod'

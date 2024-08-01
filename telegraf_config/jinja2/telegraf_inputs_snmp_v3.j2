@@ -1,0 +1,12 @@
+[[inputs.snmp]]
+  agents = ["udp://{{ url }}"]
+  version = 3
+  timeout = "{{ config['inputs'][device_info['snmp_auth']]['timeout'] }}"
+  retries = 3
+  path = ["/usr/share/snmp/mibs"]
+  sec_name = "{{ config['inputs'][device_info['snmp_auth']]['sec_name'] }}"
+  auth_protocol = "{{ config['inputs'][device_info['snmp_auth']]['auth_protocol'] }}"
+  auth_password = "{{ config['inputs'][device_info['snmp_auth']]['auth_password'] }}"
+  priv_protocol = "{{ config['inputs'][device_info['snmp_auth']]['priv_protocol'] }}"
+  priv_password = "{{ config['inputs'][device_info['snmp_auth']]['priv_password'] }}"
+  sec_level = "{{ config['inputs'][device_info['snmp_auth']]['sec_level'] }}"

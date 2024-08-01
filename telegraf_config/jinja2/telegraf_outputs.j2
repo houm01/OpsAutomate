@@ -1,0 +1,8 @@
+[[outputs.influxdb]]
+  urls = ["{{ config['outputs']['urls'] }}"]
+  database = "{{ config['outputs']['database'] }}"
+  timeout = "{{ config['outputs']['timeout'] }}"
+  username = "{{ config['outputs']['username'] }}"
+  password = "{{ config['outputs']['password'] }}"
+  skip_database_creation = {{ config['outputs']['skip_database_creation'] }}
+  insecure_skip_verify = {{ config['outputs']['insecure_skip_verify'] }}

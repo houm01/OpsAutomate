@@ -1,0 +1,47 @@
+FROM python:3.9.18-slim-bullseye
+
+ENV PYTHONPATH=/app/ops_automate
+ENV TZ=Asia/Shanghai
+
+# WORKDIR /app
+
+WORKDIR /app/ops_automate
+
+EXPOSE 9001 20000
+
+# 修改为国内源
+RUN sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+
+# 安装应用程序依赖
+RUN apt-get update && apt-get install -y \
+    weasyprint \
+    supervisor \
+    vim \
+    procps \
+    iproute2 \
+    tmux \
+    git
+
+
+
+
+# COPY ../requirements.txt /tmp/requirements.txt
+# COPY ../src/deploy/supervisor-dev/supervisord.conf /etc/supervisor
+# COPY ../src/deploy/supervisor-dev/scheduler.conf /etc/supervisor/conf.d
+# COPY ../src/deploy/supervisor-dev/web.conf /etc/supervisor/conf.d
+
+
+# RUN pip install -r /tmp/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+
+
+## Pip dependencies
+# Upgrade pip
+# RUN pip install --upgrade pip
+# Install production dependencies
+# COPY requirements.txt /tmp/requirements.txt
+# RUN pip install -r /tmp/requirements.txt && 
+#     rm /tmp/requirements.txt
+# # Install development dependencies
+# COPY requirements-dev.txt /tmp/requirements-dev.txt
+# RUN pip install -r /tmp/requirements-dev.txt && 
+#     rm /tmp/requirements-dev.txt

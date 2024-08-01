@@ -1,0 +1,8 @@
+[[inputs.http_response]]
+  urls = ["{{ http_key }}"]
+  response_timeout = "5s"
+  method = "GET"
+
+[inputs.http_response.tags]
+  name = "{{ http_value['name'] }}"
+  env = "{{ http_value['env'] }}"

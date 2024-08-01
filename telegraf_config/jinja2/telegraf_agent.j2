@@ -1,0 +1,15 @@
+[agent]
+  interval = "{{ config['agent'][monitor_type]['interval'] }}"
+  round_interval = {{ config['agent'][monitor_type]['round_interval'] }}
+  metric_batch_size = {{ config['agent'][monitor_type]['metric_batch_size'] }}
+  metric_buffer_limit = {{ config['agent'][monitor_type]['metric_buffer_limit'] }}
+  collection_jitter = "{{ config['agent'][monitor_type]['collection_jitter'] }}"
+  flush_interval = "{{ config['agent'][monitor_type]['flush_interval'] }}"
+  flush_jitter = "{{ config['agent'][monitor_type]['flush_jitter'] }}"
+  precision = "{{ config['agent'][monitor_type]['precision'] }}"
+  omit_hostname = {{ config['agent'][monitor_type]['omit_hostname'] }}
+  {% if monitor_type != 'ping' %}
+    snmp_translator = "{{ config['agent'][monitor_type]['snmp_translator'] }}"
+  {% endif %}
+
+

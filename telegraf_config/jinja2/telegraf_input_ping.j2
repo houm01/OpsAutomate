@@ -1,0 +1,9 @@
+[[inputs.ping]]
+  urls = ["{{ ping_key }}"]
+  count = {{ config['inputs']['ping']['count'] }}
+  timeout = {{ config['inputs']['ping']['timeout'] }}
+  
+[inputs.ping.tags]
+  name = "{{ ping_value['name'] }}"
+  env = "{{ ping_value['env'] }}"
+

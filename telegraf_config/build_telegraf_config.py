@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import shutil
 import yaml
 
@@ -8,6 +9,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 from nb_log import get_logger
 from jinja2 import FileSystemLoader, Environment
+
 
 
 log = get_logger('build_telegraf_config')
@@ -20,7 +22,10 @@ config_yaml = config_path / 'edit' / 'config.yaml'
 resources_yaml = config_path / 'edit' / 'resources.yaml'
 
 log.debug(f'config_path: {config_path}')
-
+log.debug(f'output_path: {output_path}')
+shutil.rmtree(output_path)
+os.makedirs(output_path)
+log.warning('删除 output 目录并重新创建..')
 
 def convert_dict(original_dict):
     # 初始化目标字典
@@ -48,7 +53,7 @@ def render_config(location, monitor_type, config, instances):
 
     result = j2_tmpl.render(config=config, monitor_type=monitor_type, instances=instances)
     
-    
+
     with open(output_path / f'telegraf_{location}_{monitor_type}.conf', 'w') as f:
         f.write(result)
 
@@ -56,8 +61,6 @@ def render_config(location, monitor_type, config, instances):
 def get_resources_by_yaml():
     with open(resources_yaml, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f.read())
-        
-
 
 
 class BuildTelegrafConfig:
@@ -69,7 +72,7 @@ class BuildTelegrafConfig:
                  config_yaml: str=None,
                  resource_yaml: str=None,
                  resource_xlsx: str=None,
-                 resource_path: str='./'):
+                 resource_path: str='./',):
 
         self.init_type = init_type
         
@@ -86,13 +89,15 @@ class BuildTelegrafConfig:
             init_type (Literal[xlsx, yaml]): _description_
         '''
         if self.init_type == 'xlsx':
-            # print(Path.cwd())
-            shutil.copy(src=Path.cwd() / 'telegraf_config' / 'example' / 'sample.xlsx', dst=self.resource_path + '/sample_input.xlsx')
-            shutil.copy(src=Path.cwd() / 'telegraf_config' / 'edit' / 'config.yaml', dst=self.resource_path + '/config_input.yaml')
+            
+            if not os.path.exists(self.resource_path + '/sample_input.xlsx'):
+                shutil.copy(src=Path.cwd() / 'telegraf_config' / 'example' / 'sample.xlsx', dst=self.resource_path + '/sample_input.xlsx')
+            if not os.path.exists(self.resource_path + '/config_input.yaml'):
+                shutil.copy(src=Path.cwd() / 'telegraf_config' / 'edit' / 'config.yaml', dst=self.resource_path + '/config_input.yaml')
     
     def get_config(self):
         with open(self.resource_path + '/config_input.yaml', 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f.read()) 
+            return yaml.safe_load(f.read())
         
     def output(self):
         if self.init_type == 'xlsx':
@@ -123,42 +128,43 @@ class BuildTelegrafConfig:
                     instance_snmp[row[2]] = {
                         'hostname': row[1],
                         'ip': row[2],
-                        'snmp_version': row[4],
-                        'vendor': row[3],
-                        'snmp_auth': row[5],
+                        'port': row[3],
+                        'snmp_version': row[5],
+                        'vendor': row[4],
+                        'snmp_auth': row[6],
                         'source': row[0]
                     }
 
             for row in sheet_ping.iter_rows(values_only=True):
-                if row[1] != 'ip' and row[2] != None:
+                if row[1] != 'ip' and row[2] is not None:
                     instance_ping[row[1]] = {
                         'name': row[2],
                         'source': row[0]
                     }   
 
             for row in sheet_http.iter_rows(values_only=True):
-                if row[1] != 'url' and row[2] != None:
+                if row[1] != 'url' and row[2] is not None:
                     instance_http[row[1]] = {
                         'name': row[2],
                         'source': row[0]
                     } 
 
             for row in sheet_ssl.iter_rows(values_only=True):
-                if row[1] != 'url' and row[2] != None:
+                if row[1] != 'url' and row[2] is not None:
                     instance_ssl[row[1]] = {
                         'name': row[2],
                         'source': row[0]
                     } 
 
             for row in sheet_tcp.iter_rows(values_only=True):
-                    if row[1] != 'url' and row[2] != None:
+                    if row[1] != 'url' and row[2] is not None:
                         instance_tcp[row[1]] = {
                             'name': row[2],
                             'source': row[0]
                         } 
 
             for row in sheet_dns.iter_rows(values_only=True):
-                    if row[1] != 'url' and row[2] != None:
+                    if row[1] != 'server' and row[2] is not None:
                         instance_dns[row[1]] = {
                             'domain': row[2],
                             'record_type': row[3],
@@ -167,7 +173,7 @@ class BuildTelegrafConfig:
 
 
             for row in sheet_prometheus.iter_rows(values_only=True):
-                if row[1] != 'url' and row[2] != None:
+                if row[1] != 'url' and row[2] is not None:
                     instance_prometheus[row[1]] = {
                         'name': row[2],
                         'source': row[0]
@@ -181,7 +187,6 @@ class BuildTelegrafConfig:
             resources['dns'] = convert_dict(original_dict=instance_dns)
             resources['prometheus'] = convert_dict(original_dict=instance_prometheus)
             
-            log.debug(resources)
             
             for monitor_type, values in resources.items():
                 for location, instances in values.items():
@@ -190,5 +195,7 @@ class BuildTelegrafConfig:
         elif self.init_type == 'yaml':
             for monitor_type, values in get_resources_by_yaml().items():
                 for location, instances in values.items():
-                    log.warning(location)
+                    # log.warning(location)
                     render_config(location=location, monitor_type=monitor_type, config=self.get_config(), instances=instances)
+
+

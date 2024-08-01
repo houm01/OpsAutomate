@@ -1,5 +1,5 @@
 [[inputs.snmp]]
-  agents = ["udp://{{ url }}"]
+  agents = ["udp://{{ url }}:{{device_info['port']}}"]
   version = {{ config['inputs'][device_info['snmp_auth']]['version'] }}
   timeout = "{{ config['inputs'][device_info['snmp_auth']]['timeout'] }}"
   retries = {{ config['inputs'][device_info['snmp_auth']]['retries'] }}

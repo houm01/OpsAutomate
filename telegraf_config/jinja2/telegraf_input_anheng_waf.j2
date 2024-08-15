@@ -1,0 +1,55 @@
+
+  [[inputs.snmp.field]]
+    name = "sysUpTime"
+    oid = "SNMPv2-MIB::sysUpTime.0"
+    conversion = "float(2)"
+
+  [[inputs.snmp.field]]
+    name = "sysName"
+    oid = "SNMPv2-MIB::sysName.0"
+    is_tag = true
+
+  [[inputs.snmp.field]]
+    name = "sysDescr"
+    oid = "SNMPv2-MIB::sysDescr.0"
+
+  [[inputs.snmp.table]]
+    name = "hh3cDot11APObjectStatusTable"
+    oid = "1.3.6.1.4.1.25506.2.75.2.1.1"
+
+
+  [[inputs.snmp.table]]
+    oid = "IF-MIB::ifTable"
+    name = "interface"
+    inherit_tags = ["sysName"]
+
+  [[inputs.snmp.table.field]]
+    oid = "IF-MIB::ifName"
+    name = "ifName"
+    is_tag = true
+
+  [[inputs.snmp.table.field]]
+    name = "ifHCInOctets"
+    oid = "IF-MIB::ifHCInOctets"
+
+  [[inputs.snmp.table.field]]
+    name = "ifHCOutOctets"
+    oid = "IF-MIB::ifHCOutOctets"
+
+
+  [[processors.enum]]
+    namepass = ["interface"]
+
+  [[processors.enum.mapping]]
+    ## Name of the tag to map
+    field = "ifOperStatus"
+
+    ## Table of mappings
+    [processors.enum.mapping.value_mappings]
+      1 = "up"
+      2 = "down"
+      3 = "testing"
+      4 = "unknown"
+      5 = "dormant"
+      6 = "notPresent"
+      7 = "lowerLayerDown"

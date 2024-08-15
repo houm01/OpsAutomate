@@ -17,6 +17,12 @@
                     {% elif device_info['vendor'] == 'h3c_wac' %}
                         {% include "telegraf_input_h3c_wac.j2" %}
 
+                    {% elif device_info['vendor'] == 'h3c_fw' %}
+                        {% include "telegraf_input_h3c_fw.j2" %}
+
+                    {% elif device_info['vendor'] == 'h3c_switch' %}
+                        {% include "telegraf_input_h3c_switch.j2" %}
+
                     {% elif device_info['vendor'] == 'dell' %}
                         {% include "telegraf_input_dell.j2" %}
 
@@ -31,6 +37,12 @@
 
                     {% elif device_info['vendor'] == 'ruijie_switch' %}
                         {% include "telegraf_input_ruijie_switch.j2" %}
+
+                    {% elif device_info['vendor'] == 'anheng_waf' %}
+                        {% include "telegraf_input_anheng_waf.j2" %}
+
+                    {% elif device_info['vendor'] == 'paloalto' %}
+                        {% include "telegraf_input_paloalto.j2" %}
 
                     {% endif %}
 
@@ -46,6 +58,12 @@
                     {% elif device_info['vendor'] == 'h3c_wac' %}
                         {% include "telegraf_input_h3c_wac.j2" %}
 
+                    {% elif device_info['vendor'] == 'h3c_fw' %}
+                        {% include "telegraf_input_h3c_fw.j2" %}
+
+                    {% elif device_info['vendor'] == 'h3c_switch' %}
+                        {% include "telegraf_input_h3c_switch.j2" %}
+
                     {% elif device_info['vendor'] == 'dell' %}
                         {% include "telegraf_input_dell.j2" %}
 
@@ -60,6 +78,12 @@
 
                     {% elif device_info['vendor'] == 'ruijie_switch' %}
                         {% include "telegraf_input_ruijie_switch.j2" %}
+
+                    {% elif device_info['vendor'] == 'anheng_waf' %}
+                        {% include "telegraf_input_anheng_waf.j2" %}
+
+                    {% elif device_info['vendor'] == 'paloalto' %}
+                        {% include "telegraf_input_paloalto.j2" %}
 
                     {% endif %}
             {% endif %}

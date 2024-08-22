@@ -35,14 +35,26 @@
                     {% elif device_info['vendor'] == 'sangfor' %}
                         {% include "telegraf_input_sangfor.j2" %}
 
-                    {% elif device_info['vendor'] == 'ruijie_switch' %}
-                        {% include "telegraf_input_ruijie_switch.j2" %}
+                    {% elif device_info['vendor'] == 'ruijie' %}
+                        {% include "telegraf_input_ruijie.j2" %}
 
                     {% elif device_info['vendor'] == 'anheng_waf' %}
                         {% include "telegraf_input_anheng_waf.j2" %}
 
                     {% elif device_info['vendor'] == 'paloalto' %}
                         {% include "telegraf_input_paloalto.j2" %}
+
+                    {% elif device_info['vendor'] == 'brocade' %}
+                        {% include "telegraf_input_brocade.j2" %}
+
+                    {% elif device_info['vendor'] == 'asiainfo' %}
+                        {% include "telegraf_input_asiainfo.j2" %}
+
+                    {% elif device_info['vendor'] == 'ipmi' %}
+                        {% include "telegraf_input_ipmi.j2" %}
+
+                    {% elif device_info['vendor'] == 'ups' %}
+                        {% include "telegraf_input_ups.j2" %}
 
                     {% endif %}
 
@@ -76,14 +88,26 @@
                     {% elif device_info['vendor'] == 'sangfor' %}
                         {% include "telegraf_input_sangfor.j2" %}
 
-                    {% elif device_info['vendor'] == 'ruijie_switch' %}
-                        {% include "telegraf_input_ruijie_switch.j2" %}
+                    {% elif device_info['vendor'] == 'ruijie' %}
+                        {% include "telegraf_input_ruijie.j2" %}
 
                     {% elif device_info['vendor'] == 'anheng_waf' %}
                         {% include "telegraf_input_anheng_waf.j2" %}
 
                     {% elif device_info['vendor'] == 'paloalto' %}
                         {% include "telegraf_input_paloalto.j2" %}
+
+                    {% elif device_info['vendor'] == 'brocade' %}
+                        {% include "telegraf_input_brocade.j2" %}
+
+                    {% elif device_info['vendor'] == 'asiainfo' %}
+                        {% include "telegraf_input_asiainfo.j2" %}
+
+                    {% elif device_info['vendor'] == 'ipmi' %}
+                        {% include "telegraf_input_ipmi.j2" %}
+
+                    {% elif device_info['vendor'] == 'ups' %}
+                        {% include "telegraf_input_ups.j2" %}
 
                     {% endif %}
             {% endif %}

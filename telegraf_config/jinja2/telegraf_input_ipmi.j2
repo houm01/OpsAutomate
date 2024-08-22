@@ -1,0 +1,497 @@
+                        [[inputs.snmp.field]]
+    name = "systemFQDN"
+    oid = "IDRAC-MIB-SMIv2::systemFQDN.0"
+    is_tag = true
+  
+  [[inputs.snmp.table]]
+     name = "idrac"
+     inherit_tags = ["systemFQDN"]
+     index_as_tag = true
+
+
+  [[inputs.snmp.table.field]]
+    name = "racVersion"
+    oid = "IDRAC-MIB-SMIv2::racVersion.0"
+
+  [[inputs.snmp.table.field]]
+    name = "racURL"
+    oid = "IDRAC-MIB-SMIv2::racURL.0"
+
+
+  [[inputs.snmp.table.field]]
+    name = "systemServiceTag"
+    oid = "IDRAC-MIB-SMIv2::systemServiceTag.0"
+    
+    
+
+  [[inputs.snmp.table.field]]
+    name = "systemExpressServiceCode"
+    oid = "IDRAC-MIB-SMIv2::systemExpressServiceCode.0"
+    
+    
+
+  [[inputs.snmp.table.field]]
+    name = "systemModelName"
+    oid = "IDRAC-MIB-SMIv2::systemModelName.0"
+    
+    
+
+  [[inputs.snmp.table.field]]
+    name = "systemModelName"
+    oid = "IDRAC-MIB-SMIv2::systemModelName.0"
+    
+  
+
+  # statusGroup
+
+  [[inputs.snmp.table.field]]
+    name = "globalSystemStatus"
+    oid = "IDRAC-MIB-SMIv2::globalSystemStatus.0"
+    
+
+  [[inputs.snmp.table.field]]
+    name = "systemLCDStatus"
+    oid = "IDRAC-MIB-SMIv2::systemLCDStatus.0"
+    
+
+  [[inputs.snmp.table.field]]
+    name = "globalStorageStatus"
+    oid = "IDRAC-MIB-SMIv2::globalStorageStatus.0"
+    
+
+  [[inputs.snmp.table.field]]
+    name = "systemPowerState"
+    oid = "IDRAC-MIB-SMIv2::systemPowerState.0"
+    
+
+  [[inputs.snmp.table.field]]
+    name = "systemPowerUpTime"
+    oid = "IDRAC-MIB-SMIv2::systemPowerUpTime.0"
+    
+  # [[inputs.snmp.table]]
+  #    name = "idrac_tables"
+  #    inherit_tags = [ "systemFQDN"]
+
+    [[inputs.snmp.table.field]]
+       name = "systemBIOSVersionName"
+       oid = "IDRAC-MIB-SMIv2::systemBIOSVersionName.1.1"
+
+    [[inputs.snmp.table.field]]
+       name = "batteryState"
+       oid = "IDRAC-MIB-SMIv2::batteryState.1"
+
+    [[inputs.snmp.table.field]]
+       name = "intrusionReading"
+       oid = "IDRAC-MIB-SMIv2::intrusionReading.1.1"
+
+    [[inputs.snmp.table.field]]
+       name = "physicalDiskMediaType"
+       oid = "IDRAC-MIB-SMIv2::physicalDiskMediaType"
+
+    [[inputs.snmp.table.field]]
+       name = "physicalDiskState"
+       oid = "IDRAC-MIB-SMIv2::physicalDiskState"
+      
+    [[inputs.snmp.table.field]]
+       name = "physicalDiskSmartAlertIndication"
+       oid = "IDRAC-MIB-SMIv2::physicalDiskSmartAlertIndication"
+
+    [[inputs.snmp.table.field]]
+       name = "physicalDiskCapacityInMB"
+       oid = "IDRAC-MIB-SMIv2::physicalDiskCapacityInMB"
+
+    [[inputs.snmp.table.field]]
+       name = "physicalDiskName"
+       oid = "IDRAC-MIB-SMIv2::physicalDiskName"
+       
+
+    [[inputs.snmp.table.field]]
+       name = "memory-status"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.200.10.1.27"
+
+    [[inputs.snmp.table.field]]
+       name = "globalStorageStatus"
+       oid = "IDRAC-MIB-SMIv2::globalStorageStatus"
+
+    [[inputs.snmp.table.field]]
+       name = "temp-status"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.200.10.1.63"
+
+    [[inputs.snmp.table.field]]
+       name = "systemStatePowerSupplyStatusCombined"
+       oid = "IDRAC-MIB-SMIv2::systemStatePowerSupplyStatusCombined.1"
+
+    [[inputs.snmp.table.field]]
+       name = "log-dates"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.300.40.1.8"
+    [[inputs.snmp.table.field]]
+       name = "log-entry"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.300.40.1.5"
+    [[inputs.snmp.table.field]]
+       name = "log-severity"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.300.40.1.7"
+    [[inputs.snmp.table.field]]
+       name = "log-number"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.300.40.1.2"
+       
+    [[inputs.snmp.table.field]]
+       name = "nic-name"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.1100.90.1.30"
+       
+    [[inputs.snmp.table.field]]
+       name = "nic-vendor"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.1100.90.1.7"
+    [[inputs.snmp.table.field]]
+       name = "nic-status"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.1100.90.1.4"
+    [[inputs.snmp.table.field]]
+       name = "nic-current_mac"
+       oid = ".1.3.6.1.4.1.674.10892.5.4.1100.90.1.15"
+       conversion = "hwaddr"
+  [[inputs.snmp.table.field]]
+     name = "fan1-speed"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.1"
+  [[inputs.snmp.table.field]]
+     name = "fan2-speed"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.2"
+  [[inputs.snmp.table.field]]
+     name = "fan3-speed"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.3"
+  [[inputs.snmp.table.field]]
+     name = "fan4-speed"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.4"
+  [[inputs.snmp.table.field]]
+     name = "fan5-speed"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.5"
+  [[inputs.snmp.table.field]]
+     name = "fan6-speed"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.12.1.6.1.6"
+ 
+  [[inputs.snmp.table.field]]
+     name = "inlet-temp"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.1"
+  [[inputs.snmp.table.field]]
+     name = "exhaust-temp"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.2"
+  [[inputs.snmp.table.field]]
+     name = "cpu1-temp"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.3"
+  [[inputs.snmp.table.field]]
+     name = "cpu2-temp"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.700.20.1.6.1.4"
+  [[inputs.snmp.table.field]]
+     name = "cmos-batterystate"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.600.50.1.6.1.1"
+  [[inputs.snmp.table.field]]
+     name = "system-watts"
+     oid  = ".1.3.6.1.4.1.674.10892.5.4.600.30.1.6.1.3"
+
+  # lenovo xcc
+   [[inputs.snmp.field]]
+     name = "machineLevelVpdMachineType"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.2.1.1.0"
+
+   [[inputs.snmp.field]]
+     name = "machineLevelVpdMachineModel"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.2.1.2.0"
+
+   [[inputs.snmp.field]]
+     name = "machineLevelSerialNumber"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.2.1.3.0"
+     is_tag = true
+
+   [[inputs.snmp.field]]
+     name = "machineLevelUUID"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.2.1.4.0"
+
+   [[inputs.snmp.field]]
+     name = "machineLevelProductName"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.2.1.5.0"
+
+   [[inputs.snmp.field]]
+     name = "ntpEnable"
+     oid = "1.3.6.1.4.1.19046.11.1.3.4.2.8.1"
+    
+   [[inputs.snmp.field]]
+     name = "ntpIpAddressHostname1"
+     oid = "1.3.6.1.4.1.19046.11.1.3.4.2.8.2"
+
+   [[inputs.snmp.field]]
+     name = "ntpUpdateFrequency"
+     oid = "1.3.6.1.4.1.19046.11.1.3.4.2.8.3"
+
+   [[inputs.snmp.table]]
+     name = "lenovo_allLEDsTable"
+     oid = "1.3.6.1.4.1.19046.11.1.1.8.2"
+     index_as_tag = true
+
+   [[inputs.snmp.table.field]]
+     name = "ledIndex"
+     oid = "1.3.6.1.4.1.19046.11.1.1.8.2.1.1"
+
+   [[inputs.snmp.table.field]]
+     name = "ledIdentifier"
+     oid = "1.3.6.1.4.1.19046.11.1.1.8.2.1.2"
+
+   [[inputs.snmp.table.field]]
+     name = "ledLabel"
+     oid = "1.3.6.1.4.1.19046.11.1.1.8.2.1.4"
+
+   [[inputs.snmp.table.field]]
+     name = "ledState"
+     oid = "1.3.6.1.4.1.19046.11.1.1.8.2.1.5"
+     translate = true
+
+   [[inputs.snmp.table.field]]
+     name = "ledColor"
+     oid = "1.3.6.1.4.1.19046.11.1.1.8.2.1.6"
+
+
+   [[inputs.snmp.table]]
+     name = "lenovo_systemCPUVpdTable"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdIndex"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.1"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdDescription"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.2"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdSpeed"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.3"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdIdentifier"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.4"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdType"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.5"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdFamily"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.6"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdCores"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.7"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdThreads"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.8"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdVoltage"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.9"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdDataWidth"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.10"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdHealthStatus"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.11"
+
+   [[inputs.snmp.table.field]]
+     name = "cpuVpdCpuModel"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.20.1.12"
+
+   [[inputs.snmp.table]]
+     name = "lenovo_systemMemoryVpdTable"
+     oid = "1.3.6.1.4.1.19046.11.1.1.5.21"
+     index_as_tag = true
+
+    [[inputs.snmp.table.field]]
+      name = "memoryVpdIndex"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.1"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryVpdDescription"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.2"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryVpdPartNumber"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.3"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryVpdFRUSerialNumber"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.4"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryVpdManufactureDate"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.5"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryVpdType"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.6"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryVpdSize"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.7"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryHealthStatus"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.8"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryConfigSpeed"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.9"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryRatedSpeed"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.10"
+
+    [[inputs.snmp.table.field]]
+      name = "memoryLenovoPartNumber"
+      oid = "1.3.6.1.4.1.19046.11.1.1.5.21.1.11"
+
+   [[inputs.snmp.table]]
+     name = "lenovo_diskTable"
+     oid = "1.3.6.1.4.1.19046.11.1.1.12.2"
+     index_as_tag = true
+
+    [[inputs.snmp.table.field]]
+      name = "diskIndex"
+      oid = "1.3.6.1.4.1.19046.11.1.1.12.2.1.1"
+
+    [[inputs.snmp.table.field]]
+      name = "diskFruName"
+      oid = "1.3.6.1.4.1.19046.11.1.1.12.2.1.2"
+
+    [[inputs.snmp.table.field]]
+      name = "diskHealthStatus"
+      oid = "1.3.6.1.4.1.19046.11.1.1.12.2.1.3"
+
+   [[inputs.snmp.table]]
+     name = "lenovo_powerTable"
+     oid = "1.3.6.1.4.1.19046.11.1.1.11.2"
+     index_as_tag = true
+
+    [[inputs.snmp.table.field]]
+      name = "powerIndex"
+      oid = "1.3.6.1.4.1.19046.11.1.1.11.2.1.1"
+
+    [[inputs.snmp.table.field]]
+      name = "powerFruName"
+      oid = "1.3.6.1.4.1.19046.11.1.1.11.2.1.2"
+
+    [[inputs.snmp.table.field]]
+      name = "powerPartNumber"
+      oid = "1.3.6.1.4.1.19046.11.1.1.11.2.1.3"
+
+    [[inputs.snmp.table.field]]
+      name = "powerFRUNumber"
+      oid = "1.3.6.1.4.1.19046.11.1.1.11.2.1.4"
+
+    [[inputs.snmp.table.field]]
+      name = "powerFRUSerialNumber"
+      oid = "1.3.6.1.4.1.19046.11.1.1.11.2.1.5"  
+
+    [[inputs.snmp.table.field]]
+      name = "powerHealthStatus"
+      oid = "1.3.6.1.4.1.19046.11.1.1.11.2.1.6"  
+
+   [[inputs.snmp.table]]
+     name = "lenovo_adapterNetworkPortTable"
+     oid = "1.3.6.1.4.1.19046.11.1.1.14.4"
+     index_as_tag = true
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortIndex"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.1"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortNetworkVPDProdName"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.2"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortPhyPortNo"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.3"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortPhyPortConnector"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.4"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortPhyPortBurnedinAddress"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.5"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortNo"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.6"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortMaxDataSize"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.7"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortPermanentAddress"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.8"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortNetworkAddress"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.9"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortLinkTechnology"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.10"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortvNICMode"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.11"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortMaxSpeed"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.12"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortProtocolType"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.13"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortCurrentProtocol"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.14"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortFCoEPermanentAddress"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.15"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortFCoENetworkAddress"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.16"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortConnectionType"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.17"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortRole"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.18"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortTargetRelativePortNo"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.19"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortPhyPortLinkStatus"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.20"
+
+    [[inputs.snmp.table.field]]
+      name = "adapterNetworkPortPhyPortLinkSpeed"
+      oid = "1.3.6.1.4.1.19046.11.1.1.14.4.1.21"
+
+  [[processors.enum]]
+    namepass = ["lenovo_allLEDsTable"]
+
+  [[processors.enum.mapping]]
+    ## Name of the tag to map
+    field = "ledState"
+
+    ## Table of mappings
+    [processors.enum.mapping.value_mappings]
+      1 = "on"
+      0 = "off"
+      2 = "blinking"

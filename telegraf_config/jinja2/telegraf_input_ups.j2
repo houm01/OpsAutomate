@@ -1,0 +1,288 @@
+  [[inputs.snmp.field]]
+    name = "sysUpTime"
+    oid = "SNMPv2-MIB::sysUpTime.0"
+    conversion = "float(2)"
+
+  [[inputs.snmp.field]]
+    name = "sysName"
+    oid = "SNMPv2-MIB::sysName.0"
+    is_tag = true
+
+  [[inputs.snmp.field]]
+    name = "sysDescr"
+    oid = "SNMPv2-MIB::sysDescr.0"
+
+  [[inputs.snmp.field]]
+    name = "upsIdModelName"
+    oid = ".1.3.6.1.4.1.21111.1.6.1.3.0"
+
+  [[inputs.snmp.field]]
+    name = "upsIdFWVersion"
+    oid = "1.3.6.1.4.1.21111.1.6.1.6.0"
+
+  [[inputs.snmp.field]]
+    name = "upsIdSerialNumber"
+    oid = "1.3.6.1.4.1.21111.1.6.1.4.0"
+
+  # ups Rating
+  [[inputs.snmp.field]]
+    name = "upsRatinVoltage"
+    oid = "1.3.6.1.4.1.21111.1.6.2.1.0"
+
+  [[inputs.snmp.field]]
+    name = "upsRatoutVoltage"
+    oid = "1.3.6.1.4.1.21111.1.6.2.2.0"
+
+  [[inputs.snmp.field]]
+    name = "upsRatoutFrequency"
+    oid = "1.3.6.1.4.1.21111.1.6.2.3.0"
+
+  [[inputs.snmp.field]]
+    name = "upsRatoutCurrent"
+    oid = "1.3.6.1.4.1.21111.1.6.2.4.0"
+
+  [[inputs.snmp.field]]
+    name = "upsRatoutApparentPower"
+    oid = "1.3.6.1.4.1.21111.1.6.2.5.0"
+
+  [[inputs.snmp.field]]
+    name = "upsRatBatVoltage"
+    oid = "1.3.6.1.4.1.21111.1.6.2.6.0"
+
+  # upsBattery
+   [[inputs.snmp.field]]
+    name = "upsBatStatus"
+    oid = "1.3.6.1.4.1.21111.1.6.3.1.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatSecondsOnBattery"
+    oid = "1.3.6.1.4.1.21111.1.6.3.2.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatEstMinutesRemaining"
+    oid = "1.3.6.1.4.1.21111.1.6.3.3.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatEstChargeRemaining"
+    oid = "1.3.6.1.4.1.21111.1.6.3.4.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatPBatVoltage"
+    oid = "1.3.6.1.4.1.21111.1.6.3.5.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatPBatCurrent"
+    oid = "1.3.6.1.4.1.21111.1.6.3.6.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatTemperature"
+    oid = "1.3.6.1.4.1.21111.1.6.3.7.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatNumberInSeries"
+    oid = "1.3.6.1.4.1.21111.1.6.3.8.0"
+
+   [[inputs.snmp.field]]
+    name = "upsBatNumberInParallel"
+    oid = "1.3.6.1.4.1.21111.1.6.3.9.0"
+
+  # upsInput
+  [[inputs.snmp.field]]
+    name = "upsInLineBads"
+    oid = "1.3.6.1.4.1.21111.1.6.4.1.0"
+
+  [[inputs.snmp.field]]
+    name = "upsInTtlApparentPower"
+    oid = "1.3.6.1.4.1.21111.1.6.4.2.0"
+
+  [[inputs.snmp.field]]
+    name = "upsInTtlTruePower"
+    oid = "1.3.6.1.4.1.21111.1.6.4.3.0"
+
+  [[inputs.snmp.field]]
+    name = "upsInNumLines"
+    oid = "1.3.6.1.4.1.21111.1.6.4.4.0"
+
+   [[inputs.snmp.table]]
+    name = "upsInTable"
+    inherit_tags = ["sysName"]
+    index_as_tag = true
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInLineIndex'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.1"
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInFrequency'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.2"
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInVoltage'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.3"
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInCurrent'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.4"
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInApparentPower'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.5"
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInTruePower'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.6"
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInPowerFactor'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.7"
+
+    [[inputs.snmp.table.field]]
+      name = 'upsInLineVoltage'
+      oid = "1.3.6.1.4.1.21111.1.6.4.5.1.8"
+
+
+    [[inputs.snmp.field]]
+      name = 'upsOutSource'
+      oid = '1.3.6.1.4.1.21111.1.6.5.1.0'
+
+    [[inputs.snmp.field]]
+      name = 'upsOutFrequency'
+      oid = '1.3.6.1.4.1.21111.1.6.5.2.0'
+
+    [[inputs.snmp.field]]
+      name = 'upsOutTtlApparentPower'
+      oid = '1.3.6.1.4.1.21111.1.6.5.3.0'
+
+    [[inputs.snmp.field]]
+      name = 'upsOutTtlTruePower'
+      oid = '1.3.6.1.4.1.21111.1.6.5.4.0'
+
+    [[inputs.snmp.field]]
+      name = 'upsOutTtlPercentLoad'
+      oid = '1.3.6.1.4.1.21111.1.6.5.5.0'
+
+    [[inputs.snmp.field]]
+      name = 'upsOutNumLines'
+      oid = '1.3.6.1.4.1.21111.1.6.5.6.0'
+
+    [[inputs.snmp.table]]
+    # 写 OID 会报错
+     name = "upsOutTable"
+     inherit_tags = ["sysName"]
+     index_as_tag = true
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutLineIndex'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.1"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutVoltage'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.2"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutCurrent'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.3"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutApparentPower'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.4"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutTruePower'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.5"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutPowerFactor'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.6"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutPercentLoad'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.7"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsOutLineVoltage'
+     oid = "1.3.6.1.4.1.21111.1.6.5.7.1.8"
+
+   [[inputs.snmp.field]]
+     name = 'upsOutLockPhaseStatus'
+     oid = ".1.3.6.1.4.1.21111.1.6.5.8.0"
+
+   [[inputs.snmp.field]]
+     name = 'upsOutUPSStatus'
+     oid = ".1.3.6.1.4.1.21111.1.6.5.9.0"
+
+  # ups bypass
+    [[inputs.snmp.field]]
+      name = "upsByFrequency"
+      oid = "1.3.6.1.4.1.21111.1.6.6.1.0"
+
+    [[inputs.snmp.field]]
+      name = "upsByNumLines"
+      oid = "1.3.6.1.4.1.21111.1.6.6.2.0"
+
+    [[inputs.snmp.table]]
+    # 写 OID 会报错
+     name = "upsByTable"
+     inherit_tags = ["sysName"]
+     index_as_tag = true
+
+   [[inputs.snmp.table.field]]
+     name = 'upsByLineIndex'
+     oid = "1.3.6.1.4.1.21111.1.6.6.3.1.1"
+    
+   [[inputs.snmp.table.field]]
+     name = 'upsByVoltage'
+     oid = "1.3.6.1.4.1.21111.1.6.6.3.1.2"
+
+   [[inputs.snmp.table.field]]
+     name = 'upsByCurrent'
+     oid = "1.3.6.1.4.1.21111.1.6.6.3.1.3"
+  
+   [[inputs.snmp.table.field]]
+     name = 'upsByPower'
+     oid = "1.3.6.1.4.1.21111.1.6.6.3.1.4"
+
+  # ups test
+    [[inputs.snmp.field]]
+      name = "upsTstBatteryTestResult"
+      oid = "1.3.6.1.4.1.21111.1.6.7.2.0"
+
+    [[inputs.snmp.field]]
+      name = "upsTstBatteryTestStartTime"
+      oid = "1.3.6.1.4.1.21111.1.6.7.3.0"
+
+   [[inputs.snmp.table]]
+    oid = "IF-MIB::ifTable"
+    name = "interface"
+    inherit_tags = ["sysName"]
+    index_as_tag = true
+
+  [[inputs.snmp.table.field]]
+    oid = "IF-MIB::ifName"
+    name = "ifName"
+    is_tag = true
+
+  [[inputs.snmp.table.field]]
+    name = "ifHCInOctets"
+    oid = "IF-MIB::ifHCInOctets"
+
+  [[inputs.snmp.table.field]]
+    name = "ifHCOutOctets"
+    oid = "IF-MIB::ifHCOutOctets"
+
+  [[processors.enum]]
+    namepass = ["interface"]
+
+  [[processors.enum.mapping]]
+    ## Name of the tag to map
+    field = "ifOperStatus"
+
+    ## Table of mappings
+    [processors.enum.mapping.value_mappings]
+      1 = "up"
+      2 = "down"
+      3 = "testing"
+      4 = "unknown"
+      5 = "dormant"
+      6 = "notPresent"
+      7 = "lowerLayerDown"

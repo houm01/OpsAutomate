@@ -50,7 +50,7 @@ def run_shell_cmd(cmd):
         log.error(result.stderr)
 
 run_shell_cmd(cmd='git add .')
-run_shell_cmd(cmd=f"""git commit -m "Released v{version}""")
+run_shell_cmd(cmd=f"""git commit -m 'Released v{version}'""")
 run_shell_cmd(cmd=f'git tag -a v{version} -m v{version}')
 run_shell_cmd(cmd='git push --tag')
 run_shell_cmd(cmd='git push')

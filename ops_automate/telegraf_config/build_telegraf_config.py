@@ -14,8 +14,10 @@ from jinja2 import FileSystemLoader, Environment
 
 log = get_logger('build_telegraf_config')
 
-config_path = Path.cwd() / 'telegraf_config'
-# log.debug(config_path)
+config_path = Path.cwd() / 'ops_automate' / 'telegraf_config'
+log.debug(config_path)
+
+
 jinja2_path = config_path / 'jinja2'
 output_path = config_path / 'output'
 config_yaml = config_path / 'edit' / 'config.yaml'

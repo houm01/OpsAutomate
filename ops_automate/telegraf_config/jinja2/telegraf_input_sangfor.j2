@@ -1,4 +1,3 @@
-
   [[inputs.snmp.field]]
     name = "sysUpTime"
     oid = "SNMPv2-MIB::sysUpTime.0"
@@ -13,38 +12,119 @@
     name = "sysDescr"
     oid = "SNMPv2-MIB::sysDescr.0"
 
+  [[inputs.snmp.field]]
+    name = "sysCpuUsage"
+    oid = "1.3.6.1.2.1.1.11.0"
+
+  [[inputs.snmp.field]]
+    name = "sysMemUsage"
+    oid = "1.3.6.1.2.1.1.12.0"
+
+  [[inputs.snmp.field]]
+    name = "sysDiskUsage"
+    oid = "1.3.6.1.2.1.1.13.0"
+
+  [[inputs.snmp.field]]
+    name = "sfEnableDoubleHost"
+    oid = "1.3.6.1.4.1.35047.2.100.3"
+
   [[inputs.snmp.table]]
-    oid = "IF-MIB::ifTable"
-    name = "interface"
-    inherit_tags = ["sysName"]
+    name = "ipRouteTable"
+    oid = "1.3.6.1.2.1.4.21"
+    inherit_tags = ['sysName']
+    index_as_tag = true
+  
+  [[inputs.snmp.table.field]]
+    name = "ipRouteDest"
+    oid = "1.3.6.1.2.1.4.21.1.1"
+
+  [[inputs.snmp.table]]
+    name = "sfSessionsTable"
+    # oid = "1.3.6.1.4.1.35047.1.27"
+    inherit_tags = ['sysName']
+    index_as_tag = true
+
+  # [[inputs.snmp.table.field]]
+  #   name = "sfSessions"
+  #   oid = "1.3.6.1.4.1.35047.1.27"
 
   [[inputs.snmp.table.field]]
-    oid = "IF-MIB::ifName"
-    name = "ifName"
-    is_tag = true
+    name = "sfNewSessions"
+    oid = "1.3.6.1.4.1.35047.1.27.1"
 
   [[inputs.snmp.table.field]]
-    name = "ifHCInOctets"
-    oid = "IF-MIB::ifHCInOctets"
+    name = "sfTotalSessions"
+    oid = "1.3.6.1.4.1.35047.1.27.2"
+
+  [[inputs.snmp.table]]
+    name = "sfIfTable"
+    # oid = "1.3.6.1.4.1.35047.1.34"
+    inherit_tags = ['sysName']
+    index_as_tag = true
+  
+  [[inputs.snmp.table.field]]
+    name = "ifIndex"
+    oid = "1.3.6.1.4.1.35047.1.34.1.1"
 
   [[inputs.snmp.table.field]]
-    name = "ifHCOutOctets"
-    oid = "IF-MIB::ifHCOutOctets"
+    name = "sfIfName"
+    oid = "1.3.6.1.4.1.35047.1.34.1.2"
 
+  [[inputs.snmp.table.field]]
+    name = "sfIfType"
+    oid = "1.3.6.1.4.1.35047.1.34.1.3"
 
-  [[processors.enum]]
-    namepass = ["interface"]
+  [[inputs.snmp.table.field]]
+    name = "sfIfAddr"
+    oid = "1.3.6.1.4.1.35047.1.34.1.4"
 
-  [[processors.enum.mapping]]
-    ## Name of the tag to map
-    field = "ifOperStatus"
+  [[inputs.snmp.table.field]]
+    name = "sfIfMask"
+    oid = "1.3.6.1.4.1.35047.1.34.1.5"
 
-    ## Table of mappings
-    [processors.enum.mapping.value_mappings]
-      1 = "up"
-      2 = "down"
-      3 = "testing"
-      4 = "unknown"
-      5 = "dormant"
-      6 = "notPresent"
-      7 = "lowerLayerDown"
+  [[inputs.snmp.table.field]]
+    name = "sfIfManage"
+    oid = "1.3.6.1.4.1.35047.1.34.1.6"
+
+  [[inputs.snmp.table.field]]
+    name = "sfIfIpAddressFamily"
+    oid = "1.3.6.1.4.1.35047.1.34.1.12"
+
+  [[inputs.snmp.table.field]]
+    name = "sfVedorOUI"
+    oid = "1.3.6.1.4.1.35047.1.35"
+
+     [[inputs.snmp.table]]
+       oid = "IF-MIB::ifXTable"
+       name = "interface"
+       inherit_tags = ["sysName"]
+       index_as_tag = true
+     [[inputs.snmp.table.field]]
+       oid = "IF-MIB::ifName"
+       name = "ifName"
+       is_tag = true
+     [[inputs.snmp.table.field]]
+       name = "ifHCInOctets"
+       oid = "IF-MIB::ifHCInOctets"
+     [[inputs.snmp.table.field]]
+       name = "ifHCOutOctets"
+       oid = "IF-MIB::ifHCOutOctets"
+     [[inputs.snmp.table.field]]
+       name = "ifAlias"
+       oid = "1.3.6.1.2.1.31.1.1.1.18"
+
+ [[processors.enum]]
+ namepass = ["interface"]
+ 
+ [[processors.enum.mapping]]
+     ## Name of the tag to map
+     field = "ifOperStatus"
+     ## Table of mappings
+     [processors.enum.mapping.value_mappings]
+     1 = "up"
+     2 = "down"
+     3 = "testing"
+     4 = "unknown"
+     5 = "dormant"
+     6 = "notPresent"
+     7 = "lowerLayerDown"

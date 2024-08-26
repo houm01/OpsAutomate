@@ -4,17 +4,17 @@ from .endpoints.network import NetworkEndpoint
 from .endpoints.vmware import VMWareEndpoint
 from .endpoints.common import CommonEndpoint
 from .endpoints.extensions import ExtensionsEndpoint
+from .endpoints.automate import AutomateEndpoint
+
 from influxdb import InfluxDBClient
 import urllib3
 urllib3.disable_warnings()
 from pymongo import MongoClient
 
-#test
-
 
 class BaseClient:
     
-    def __init__(self, 
+    def __init__(self,
                  influx_host: str=None,
                  influx_port: int=8086,
                  influx_username: str=None,
@@ -69,6 +69,7 @@ class BaseClient:
         self.vmware = VMWareEndpoint(self)
         self.extensions = ExtensionsEndpoint(self)
         self.common = CommonEndpoint(self)
+        self.automate = AutomateEndpoint(self)
         
 
     def _build_influxdb_client(self):
@@ -88,7 +89,7 @@ class Client(BaseClient):
                         password=self._influx_password,
                         database=self._influx_database,
                         ssl=self._influx_ssl)
-        
+
     def _build_mongo_client(self):
         client = MongoClient(host=self._mongo_host,
                              port=self._mongo_port,
@@ -100,7 +101,7 @@ class Client(BaseClient):
         else:
             print(self._mongo_database)
             return client[self._mongo_database]['alert']
-    
+
     def _build_feishu_client(self):
         if self.feishu_app_id:
             from cc_feishu.client import Client as FeishuClient
